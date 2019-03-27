@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var alienlmageView: UIImageView!
     
     var count = 1
+    var direction = true//up
+    
     
     @IBOutlet weak var myLabel: UILabel!
     
@@ -24,11 +26,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func updateButtonPressed(_ sender: Any) {
-        count+=1
         
-        if count == 6 {
-            count = 1
+        if count == 5 {
+            direction = false
+        }else if count == 1 {
+            direction = true
         }
+        if direction == true {
+            count+=1
+        } else{
+            count-=1
+        }
+       
         alienlmageView.image = UIImage(named: "frame\(count).png")
         
         myLabel.text = "frame\(count).png"
